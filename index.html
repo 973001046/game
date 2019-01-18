@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>找茬王</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<script src="js/public.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/customAnimate.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div id="wrap" v-cloak>
+		<div class="top-broad"><img src="imgs/top.png"></div>
+		<div class="music"><img src="imgs/on.png"></div>
+		<div class="page-container first" v-if='firstPage'>
+			<div class="loading animated fadeInDown">{{timeClock}}%</div>
+			<div class="loding-txt animated fadeInUp"><img src="imgs/loading.png"></div>
+			<div class="bottom-img">
+				<img class="animated slideInUp" src="imgs/bottomFruit.png">
+				<img src="imgs/fruitBoard.png">
+			</div>
+		</div>
+
+		<div class="page-container second" v-if='secondPage'>
+			<div class="logo animated bounce">
+				<img src="imgs/logo.png">
+			</div>
+
+			<div class="txt">
+				<img class="animated heartBeat" src="imgs/say.png">
+				<div class="animated rubberBand"><img @click='readyGo' class="shake_box" src="imgs/readyGo.png"></div>
+			</div>
+
+			<div class="bottom-img">
+				<img class="animated slideInUp" src="imgs/bottomFruit.png">
+				<img src="imgs/fruitBoard.png">
+			</div>
+		</div>
+
+		<div class="page-container third" v-if='thirdPage'>
+			<!-- S 倒计时 -->
+			<div class="timer" v-show='timerStatus'>
+				<img src="imgs/timer.png">
+				<div class="num">{{leftTime}}</div>
+			</div>
+			<!-- E 倒计时 -->
+
+			<!-- S 题目列表 -->
+			<div class="lists" v-show='subjectLists'>
+				<div class="imgs-list">
+					<template v-for='i in 28'>
+					<img src="imgs/fruit1F.png">
+					</template>
+				</div>
+			</div>
+			<!-- E 题目列表 -->
+
+			<div class="explain" v-show='explain' @click='outAnimate'>
+				<img class="animated " :class='{flipInX: !explainAnimate, bounceOutLeft: explainAnimate}' src="imgs/explain.png">
+			</div>
+
+			<div class="guid" v-show='guidTip' @click='guidFunc'>
+				<!-- S 关卡数 -->
+				<div class="top-img animated" :class='{fadeInDownBig:guidTipStatus, fadeOutUp: !guidTipStatus}'>
+					<img :src="numList[subjectIndex-1]">
+					<div class="status">{{statusList[subjectIndex-1]}}</div>
+				</div>
+				<!-- E 关卡数 -->
+
+				<div class="tip animated" :class='{rotateInDownRight:guidTipStatus, rotateOutDownRight: !guidTipStatus}'>
+					<div class="people">
+						<img src="imgs/people.png">
+					</div>
+					<!-- S 关卡注释 -->
+					<div class="txt">
+						<img :src="tipList[subjectIndex-1]">
+					</div>
+					<!-- S 关卡注释 -->
+				</div>
+			</div>
+
+			<!-- S 通关成功 -->
+			<div class="success" v-show='successStatus'>
+				<div class="discount">
+					<div class="list">
+						<a href="#"><img src="imgs/discount.png"></a>
+					</div>
+				</div>
+
+				<div class="control">
+					<div class="see"><a href="#"><img src="imgs/see.png"></a></div>
+					<div class="again"><a href="#"><img src="imgs/fail1.png"></a></div>
+				</div>
+			</div>
+			<!-- E 通关成功 -->
+
+			<!-- S 挑战失败 -->
+			<div class="fail" v-show='failStatus'>
+				<div class="control">
+					<div class="again"><img src="imgs/fail1.png"></div>
+					<div class="go"><a href="#"><img src="imgs/fail2.png"></a></div>
+					<div class="share"><a href="#"><img src="imgs/fail3.png"></a></div>
+				</div>
+			</div>
+			<!-- E 挑战失败 -->
+
+			<div class="bottom-third">
+				<img src="imgs/bottom.png">
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/vue.min.js"></script>
+<script src="js/index.js"></script>
+</html>
