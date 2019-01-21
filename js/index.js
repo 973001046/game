@@ -72,17 +72,27 @@ var game = new Vue({
         },
 	   firstTimer: function(){
 	   	  var _this = this
-	   	  var magnification = this.randomInt()
-	   	  var _this = this; 
-	   	  if(this.timeClock <100){
-	   	  	 setTimeout(function(){
-	   	  	 	_this.timeClock++
-	   	  	 	_this.firstTimer()
-	   	  	 }, magnification*10)
-	   	  } else {
-	   	  	 this.firstPage = false
-	   	  	 this.secondPage = true
-	   	  }
+		  Resloader.UI({ afterDelay: 1000, expires: 5 }).on('progress', function(data){
+		  	if(_this.timeClock <100){
+		  	   _this.timeClock = parseInt((data.progress)*100)
+		  	} else {
+		  	   setTimeout(function(){
+		  	   	  _this.firstPage = false
+	   	  	 	  _this.secondPage = true
+		  	   },800)
+		  	}
+		  });
+	   	  // var magnification = this.randomInt()
+	   	  // var _this = this; 
+	   	  // if(this.timeClock <100){
+	   	  // 	 setTimeout(function(){
+	   	  // 	 	_this.timeClock++
+	   	  // 	 	// _this.firstTimer()
+	   	  // 	 }, magnification*10)
+	   	  // } else {
+	   	  // 	 this.firstPage = false
+	   	  // 	 this.secondPage = true
+	   	  // }
 	   },
 	   randomInt: function(){
 	   	  return Math.round(Math.random()*5 + 1)
@@ -215,6 +225,7 @@ var game = new Vue({
 		this.getTip()
 		this.getNum()
 		this.isPaused()
+		// Resloader.UI({ afterDelay: 1000, expires: 5 }).on('progress', function(data){console.log(data)});
 	}
 })
 

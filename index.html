@@ -13,7 +13,7 @@
 </head>
 <body>
 	<audio loop autoplay="autoplay" src="js/bgm.mp3" controls="controls" preload id="music1" hidden></audio>
-	<div id="wrap" v-cloak>
+	<div id="wrap" >
 		<div class="top-broad"><img src="imgs/top.png"></div>
 		<div class="music" @click='playMusic'>
 			<img v-if='musicPlayStatus' class='spin' src="imgs/on.png">
@@ -104,7 +104,7 @@
 						</div>
 					</div>
 
-					<div class="control">
+					<div class="control"> 
 						<div class="see"><a href="#"><img src="imgs/see.png"></a></div>
 						<div class="again" @click='onceAgain'><a href="#"><img src="imgs/fail1.png"></a></div>
 					</div>
@@ -127,6 +127,60 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="loading-img">
+		<span class="lcheckpoint1"></span>
+		<span class="lcheckpoint2"></span>
+		<span class="lcheckpoint3"></span>
+		<span class="lcheckpoint4"></span>
+		<span class="lcheckpoint5"></span>
+		<span class="lcheckpoint6"></span>
+		<span class="lcheckpoint7"></span>
+
+		<span class="lboard"></span>
+		<span class="lbottom"></span>
+		<span class="ldiscount"></span>
+		<span class="lexplain"></span>
+		<span class="lfail"></span>
+		<span class="lfail0"></span>
+		<span class="lfail1"></span>
+		<span class="lfail2"></span>
+		<span class="lfail3"></span>
+		<span class="lfruit1F"></span>
+
+		<span class="lfruit2F"></span>
+		<span class="lfruit3F"></span>
+		<span class="lfruit4F"></span>
+		<span class="lfruit5F"></span>
+		<span class="lfruit6F"></span>
+		<span class="lfruit7F"></span>
+		<span class="lfruit1T"></span>
+		<span class="lfruit2T"></span>
+		<span class="lfruit3T"></span>
+		<span class="lfruit4T"></span>
+
+		<span class="lfruit5T"></span>
+		<span class="lfruit6T"></span>
+		<span class="lfruit7T"></span>
+		<span class="lfruitBoard"></span>
+		<span class="lguid"></span>
+		<span class="llogo"></span>
+		<span class="lpeople"></span>
+		<span class="lreadyGo"></span>
+		<span class="lsay"></span>
+		<span class="lsee"></span>
+
+		<span class="lsuccess"></span>
+		<span class="ltimer"></span>
+		<span class="ltxt1"></span>
+		<span class="ltxt2"></span>
+		<span class="ltxt3"></span>
+		<span class="ltxt4"></span>
+		<span class="ltxt5"></span>
+		<span class="ltxt6"></span>
+		<span class="ltxt7"></span>
+	</div>
 </body>
+<script type="text/javascript" src="./js/resloader.min.js"></script>
 <script src="js/index.js"></script>
 </html>
