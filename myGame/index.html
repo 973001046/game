@@ -13,6 +13,7 @@
 <body>
 	<audio loop autoplay="autoplay" src="js/bgm.mp3" controls="controls" preload id="music1" hidden></audio>
 	<div id="wrap" >
+		{{subjectIndex}}
 		<div class="top-broad"><img src="imgs/top.png"></div>
 		<div class="music" @click='playMusic'>
 			<img v-if='musicPlayStatus' class='spin' src="imgs/on.png">
@@ -94,38 +95,58 @@
 				</div>
 			</div>
 
-			<!-- S 通关成功 -->
-			<!-- <div class="success" v-show='successStatus'> -->
-				<div class="success">
-				<div class="animated" :class="{ fadeInDown: successAnimatedStatus, lightSpeedOut: !successAnimatedStatus }">
+			<!-- S 挑战成功 -->
+			<div class="success challenge" v-show='challenge'>
+				<!-- <div class="success challenge"> -->
+				<div class="animated" :class="{ fadeInDown: successAnimatedStatus1, lightSpeedOut: !successAnimatedStatus1 }">
 					<div class="discount">
 						<div class="list">
-							<a href="#"><img src="imgs/discount1.png"></a>
-							<a href="#"><img src="imgs/discount2.png"></a>
-							<a href="#"><img src="imgs/discount3.png"></a>
-							<a href="#"><img src="imgs/discount4.png"></a>
-							<a href="#"><img src="imgs/discount5.png"></a>
-							<a href="#"><img src="imgs/discount6.png"></a>
+							<a href="#"><img :src="discountList[subjectIndex-1].url"></a>
 						</div>
 					</div>
 
 					<div class="control"> 
 						<div class="see"><a href="#"><img src="imgs/see.png"></a></div>
+						<div class="again" @click='getNext'><a href="#"><img src="imgs/fail11.png"></a></div>
+					</div>
+				</div>
+			</div>
+			<!-- E 挑战成功 -->
+
+			<!-- S 通关成功/打包家乡味 -->
+			<div class="success" v-show='successStatus' :class='{pack: packStatus}'>
+				<!-- <div class="success"> -->
+				<div class="animated" :class="{ fadeInDown: successAnimatedStatus, lightSpeedOut: !successAnimatedStatus }">
+					<div class="discount">
+						<div class="list">
+							<a href="#" v-for='(index,item) in discountList' v-if='index < (subjectIndex-1)'><img :src="item.url"></a>
+							<div class="center" v-if='(subjectIndex-1)==0'>暂未获得优惠券</div>
+						</div>
+					</div>
+
+					<div class="control"> 
+						<div class="see sp"><a href="#"><img src="imgs/see.png"></a></div>
 						<div class="again" @click='onceAgain'><a href="#"><img src="imgs/fail1.png"></a></div>
 					</div>
 				</div>
 			</div>
-			<!-- E 通关成功 -->
+			<!-- E 通关成功/打包家乡味 -->
 
 			<!-- S 挑战失败 -->
 			<div class="fail" v-show='failStatus'>
 				<div class="control animated" :class="{ fadeInDown: failAnimated, lightSpeedOut: !failAnimated }">
 					<div class="again" @click='onceAgain'><img src="imgs/fail1.png"></div>
-					<div class="go"><a href="#"><img src="imgs/fail2.png"></a></div>
-					<div class="share"><a href="#"><img src="imgs/fail3.png"></a></div>
+					<div class="go" @click='go'><a href="#"><img src="imgs/fail2.png"></a></div>
+					<div class="share" @click='shareStatus = !shareStatus'><a href="#"><img src="imgs/fail3.png"></a></div>
 				</div>
 			</div>
 			<!-- E 挑战失败 -->
+
+			<!-- S 分享图片 -->
+			<div class="share-img" v-if='shareStatus' @click='shareStatus = !shareStatus'>
+				<img src="imgs/share.png">
+			</div>
+			<!-- S 分享图片 -->
 
 			<div class="bottom-third">
 				<img src="imgs/bottom.png">
@@ -141,7 +162,6 @@
 		<span class="lcheckpoint5"></span>
 		<span class="lcheckpoint6"></span>
 		<span class="lcheckpoint7"></span>
-
 		<span class="lboard"></span>
 		<span class="lbottom"></span>
 		<span class="ldiscount"></span>
@@ -152,7 +172,6 @@
 		<span class="lfail2"></span>
 		<span class="lfail3"></span>
 		<span class="lfruit1F"></span>
-
 		<span class="lfruit2F"></span>
 		<span class="lfruit3F"></span>
 		<span class="lfruit4F"></span>
@@ -163,7 +182,6 @@
 		<span class="lfruit2T"></span>
 		<span class="lfruit3T"></span>
 		<span class="lfruit4T"></span>
-
 		<span class="lfruit5T"></span>
 		<span class="lfruit6T"></span>
 		<span class="lfruit7T"></span>
@@ -174,7 +192,6 @@
 		<span class="lreadyGo"></span>
 		<span class="lsay"></span>
 		<span class="lsee"></span>
-
 		<span class="lsuccess"></span>
 		<span class="ltimer"></span>
 		<span class="ltxt1"></span>
@@ -184,6 +201,10 @@
 		<span class="ltxt5"></span>
 		<span class="ltxt6"></span>
 		<span class="ltxt7"></span>
+		<span class="lall"></span>
+		<span class="lfail11"></span>
+		<span class="lshare"></span>
+		<span class="lsuccess"></span>
 	</div>
 </body>
 <script type="text/javascript" src="./js/resloader.min.js"></script>

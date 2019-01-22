@@ -11,6 +11,7 @@ var game = new Vue({
 		guidTipStatus: true,
 		successStatus: false,
 		successAnimatedStatus: true,
+		successAnimatedStatus1: true,
 		failStatus: false,
 		failAnimated: true,
 		timeClock: 0,
@@ -28,7 +29,12 @@ var game = new Vue({
 		specialIndex: 5,
 		musicSpin: true,
 		musicPlayStatus: false,
-		onceFlag: false
+		onceFlag: false,
+		challenge: false,
+		gamesOver: true,
+		shareStatus: false,
+		packStatus: false,
+		discountList: [{link:'',url:'imgs/discount1.png'},{link:'',url:'imgs/discount2.png'},{link:'',url:'imgs/discount3.png'},{link:'',url:'imgs/discount4.png'},{link:'',url:'imgs/discount5.png'},{link:'',url:'imgs/discount6.png'},{link:'',url:'imgs/discount7.png'}]
 	},
 	methods: {
 	   getSubject: function(){
@@ -138,20 +144,35 @@ var game = new Vue({
 	   	  	 _this.timerAnimatedStatus = true
 	   	  	 _this.timerStatus = false
 	   	  	 _this.subjectListStatus = false
+	   	  	 _this.challenge = true
 	   	  },500)
-	   	  if( this.subjectIndex <= 6 ){
-	   	  	 setTimeout(function(){
-	   	  	 	_this.subjectIndex = _this.subjectIndex + 1
-	   	  	 },500)
-	   	  	 this.outAnimate()
+	   	  
+	   },
+	   getNext: function(){
+	   	  var _this = this;
+	   	  this.successAnimatedStatus1  = false
+	   	  this.failAnimated = false
+	   	  if( this.subjectIndex <= 6 && this.gamesOver){
+	   	  	setTimeout(function(){
+	   	  	  _this.challenge = false
+	   	  	  _this.successAnimatedStatus1  = true
+	   	  	  _this.subjectIndex = _this.subjectIndex + 1
+	   	  	},500)
+	   	  	this.outAnimate()
 	   	  } else {
+	   	  	this.gamesOver = true
+	   	  	setTimeout(function(){
+	   	  	  _this.failStatus = false
+	   	  	},500)
+	   	  	this.challenge = false
 	   	  	this.successStatus = true
-	   	  	// this.successAnimatedStatus = true
+	   	  	this.successAnimatedStatus1  = true
 	   	  }
 	   },
 	   gameOver: function(){
 	   	  var _this = this; 
 	   	  clearInterval(subjectTimerObj)
+	   	  this.failAnimated = true
 	   	  this.failStatus = true
 	   	  this.timerAnimatedStatus = true
 	   	  setTimeout(function(){
@@ -187,7 +208,13 @@ var game = new Vue({
 	   	  	_this.successAnimatedStatus = true
 	   	  	_this.leftTime = 8
 			_this.subjectIndex = 1
+			_this.packStatus = false
 	   	  },700)
+	   },
+	   go: function(){
+	   	  this.gamesOver = false
+	   	  this.packStatus = true
+	   	  this.getNext()
 	   },
 	   playMusic: function (){
 	   	    if(this.onceFlag){ 
@@ -225,7 +252,6 @@ var game = new Vue({
 		this.getTip()
 		this.getNum()
 		this.isPaused()
-		// Resloader.UI({ afterDelay: 1000, expires: 5 }).on('progress', function(data){console.log(data)});
 	}
 })
 
