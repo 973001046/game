@@ -104,10 +104,14 @@ var game = new Vue({
 	   	  return Math.round(Math.random()*5 + 1)
 	   },
 	   readyGo: function(){
+	   	var _this = this
 	   	  this.secondPage = false
 	   	  this.thirdPage = true
 	   	  this.explain = true
 	   	  this.playMusic()
+	   	  setTimeout(function(){
+	   	  	_this.outAnimate();
+	   	  },2000)
 	   },
 	   outAnimate: function(){
 	   	  var _this = this;
