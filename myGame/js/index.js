@@ -15,11 +15,11 @@ var game = new Vue({
 		failStatus: false,
 		failAnimated: true,
 		timeClock: 0,
-		leftTime: 8,
+		leftTime: 15,
 		subjectTimer: 0,
 		explain: false,
 		explainAnimate: false,
-		statusList: [ '8秒内找出“滑皮”的融安滑皮金桔', '8秒内找出“滑皮”的融安滑皮金', '8秒内找出“水果味”的蛋黄酥', '8秒内找出“梨型”的容县沙田柚', '8秒内找出“金黄色”的黄金百香果', '8秒内找出“红心”的红心芭乐番石榴', '8秒内找出“蛋黄呈红色”的北海鸭蛋' ],
+		statusList: [ '8秒内找出“油亮”的巴马油栗', '8秒内找出“薄皮”的富川脐橙', '8秒内找出“绿壳”的柳城乌鸡蛋', '8秒内找出“橙红”的武鸣鸣沃沃柑', '8秒内找出“白霜挂壁”的恭城柿饼', '8秒内找出“正宗”的陆川橘红饮料', '8秒内找出“蛋黄呈红色”的北海鸭蛋' ],
 		subjectItemList: [], //题目列表
 		tipList: [], //提示列表
 		numList: [], //题目数字索引
@@ -122,7 +122,7 @@ var game = new Vue({
 	   	  	_this.guidTip = true
 	   	  	setTimeout(function(){
 	   	  		_this.guidFunc()
-	   	  	},2500)
+	   	  	},5000)
 	   	  },700)
 	   },
 	   guidFunc: function(){
@@ -140,7 +140,7 @@ var game = new Vue({
 	   gameGoOn: function(){
 	   	  clearInterval(subjectTimerObj)
 	   	  var _this = this;
-	   	  this.leftTime = 8
+	   	  this.leftTime = 15
 	   	  this.subjectListStatus = true
 	   	  this.timerAnimatedStatus = true
 	   	  setTimeout(function(){
@@ -210,7 +210,7 @@ var game = new Vue({
 	   	  	_this.failAnimated = true
 	   	  	_this.successStatus = false
 	   	  	_this.successAnimatedStatus = true
-	   	  	_this.leftTime = 8
+	   	  	_this.leftTime = 15
 			_this.subjectIndex = 1
 			_this.packStatus = false
 	   	  },700)
