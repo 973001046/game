@@ -42,7 +42,7 @@ fieldset, img { border:0; }
 .third .guid .top-img .status { position: absolute; top: 2.3rem; font-size: .3rem; color: #fff; width: 3.8rem; left: 50%; margin-left: -1.9rem; }
 .third .tip { position: absolute; bottom: -.8rem; right: 10px; }
 .third .tip .people img{ width: 6.23rem; height: 8.19rem; }
-.third .tip .txt { position: absolute; top: 0.82rem; left: 1.3rem; }
+.third .tip .txt { position: absolute; top: 0.9rem; left: 1.3rem; }
 .third .tip .txt img { width: 3.7rem; }
 .third .success { position: absolute; width: 100%; height: 100%; left: 0; top: 0; background-color: rgba(0,0,0,.5);}
 .third .success .animated { position: absolute; width: 100%; height: 100%; left: 0; top: 0; }

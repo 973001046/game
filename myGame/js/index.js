@@ -34,7 +34,7 @@ var game = new Vue({
 		gamesOver: true,
 		shareStatus: false,
 		packStatus: false,
-		discountList: [{link:'',url:'imgs/discount1.png'},{link:'',url:'imgs/discount2.png'},{link:'',url:'imgs/discount3.png'},{link:'',url:'imgs/discount4.png'},{link:'',url:'imgs/discount5.png'},{link:'',url:'imgs/discount6.png'},{link:'',url:'imgs/discount7.png'}]
+		discountList: [{link:'http://lnsc.emall.linongmall.com/emall-wx/product/productDetail?productId=5d7f9547-365e-4328-9bd4-fe42db3c9160',url:'imgs/discount1.png'},{link:'http://lnsc.emall.linongmall.com/emall-wx/product/productDetail?productId=155eb495-5401-4265-b5b5-be4921892508',url:'imgs/discount2.png'},{link:'http://lnsc.emall.linongmall.com/emall-wx/product/productDetail?productId=4f7751ba-a655-4d88-9b69-af20a0a1b310',url:'imgs/discount3.png'},{link:'http://lnsc.emall.linongmall.com/emall-wx/product/productDetail?productId=3c7473c2-729f-4d32-a402-d13dc57bdcae',url:'imgs/discount4.png'},{link:'http://lnsc.emall.linongmall.com/emall-wx/product/productDetail?productId=d9daa650-f6c0-4e0f-a375-007e8f289e38',url:'imgs/discount5.png'},{link:'http://lnsc.emall.linongmall.com/emall-wx/product/productDetail?productId=77ed86f1-3a41-435d-a159-031af0c96010',url:'imgs/discount6.png'},{link:'http://lnsc.emall.linongmall.com/emall-wx/product/productDetail?productId=e430d227-1003-4b1b-a1be-8dc90134b360',url:'imgs/discount7.png'}]
 	},
 	methods: {
 	   getSubject: function(){

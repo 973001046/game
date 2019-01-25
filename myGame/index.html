@@ -55,19 +55,20 @@
 			<!-- S 题目列表 -->
 			<div class="lists animated" v-show='subjectLists' :class='{fadeOutDown: subjectListStatus}'>
 			<!-- <div class="lists animated" :class='{fadeOutDown: subjectListStatus}'> -->
-				<div class="imgs-list" v-show = 'subjectIndex != specialIndex'>
+				<!-- <div class="imgs-list" v-show = 'subjectIndex != specialIndex'> -->
+				<div class="imgs-list">
 					<template v-for='i in 28'>
 					<img class='animated jello' v-if='i == subjectItemList[subjectIndex-1].numT' @click='gameGoOn' :src="subjectItemList[subjectIndex-1].iconT">
 					<img class='animated jello' v-else @click='gameOver' :src="subjectItemList[subjectIndex-1].iconF">
 					</template>
 				</div>
 
-				<div class="imgs-list-special" v-else>
+				<!-- <div class="imgs-list-special" v-else>
 					<template v-for='i in 4'>
 					<img class='animated jello' v-if='(i+1) == subjectItemList[subjectIndex-1].numT' @click='gameGoOn' :src="subjectItemList[subjectIndex-1].iconT">
 					<img class='animated jello' v-else @click='gameOver' :src="subjectItemList[subjectIndex-1].iconF">
 					</template>
-				</div>
+				</div> -->
 			</div>
 			<!-- E 题目列表 -->
 
@@ -101,12 +102,12 @@
 				<div class="animated" :class="{ fadeInDown: successAnimatedStatus1, lightSpeedOut: !successAnimatedStatus1 }">
 					<div class="discount">
 						<div class="list">
-							<a href="#"><img :src="discountList[subjectIndex-1].url"></a>
+							<a :href="discountList[subjectIndex-1].link"><img :src="discountList[subjectIndex-1].url"></a>
 						</div>
 					</div>
 
 					<div class="control"> 
-						<div class="see"><a href="#"><img src="imgs/see.png"></a></div>
+						<div class="see"><a :href="discountList[subjectIndex-1].link"><img src="imgs/see.png"></a></div>
 						<div class="again" @click='getNext'><a href="#"><img src="imgs/fail11.png"></a></div>
 					</div>
 				</div>
